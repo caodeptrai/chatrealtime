@@ -5,20 +5,28 @@ import {
   arrayUnion,
   doc,
   serverTimestamp,
-  Timestamp,
   updateDoc,
 } from "firebase/firestore";
 import { db, storage } from "../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { FileAddOutlined,SendOutlined} from '@ant-design/icons';
+import InputEmoji from 'react-input-emoji'
 
 const Input = () => {
   const [text, setText] = useState("");
   const [img, setImg] = useState(null);
-
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
+
+  
+  const handleChange = (text)=> {
+    setText(text)
+  }
+
+  // const handleText = (e) => {
+  //   setText(e.target.value)
+  // }
 
   const handleSend = async () => {
     if (img) {
@@ -43,8 +51,10 @@ const Input = () => {
                 img: downloadURL,
               }),
             });
+            
           });
         }
+
       );
     } else {
 
@@ -84,16 +94,18 @@ const Input = () => {
 
   return (
     <div className="input">
-      <input
-        type="text"
-        placeholder="Type something..."
-        onKeyDown={handleKey}
-        onChange={(e) => setText(e.target.value)}
-        value={text}
-      />
+     
+        <InputEmoji
+
+          value={text}
+          style={{
+          width:250}}
+          onChange={handleChange }
+          onKeyDown={handleKey}
+  
+                
+        />
       <div className="send">
-        {/* <img src={Add} alt="" />
-        <span></span> */}
         <input
           type="file"
           style={{ display: "none" }}
