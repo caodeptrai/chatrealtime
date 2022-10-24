@@ -32,8 +32,8 @@ import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
     const provider = new GoogleAuthProvider();
       try {
         await signInWithPopup(auth, provider);
-        // console.log(UserIml)
-        navigate("/");
+        
+        // navigate("/");
       }catch(err) {
         setErr(true);
       }
