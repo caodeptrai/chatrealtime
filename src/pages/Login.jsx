@@ -30,6 +30,7 @@ import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
   //login with google
   const handleSubmitGoogle = async ()=> {
     const provider = new GoogleAuthProvider();
+    
       try {
         await signInWithPopup(auth, provider);
         // await setDoc(doc(db, "userChats", provider.user.uid), {});
