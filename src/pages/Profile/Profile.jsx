@@ -31,12 +31,12 @@ const Profile = ()=> {
             <h3 className='rightInfo-name'>{currentUser.displayName}</h3>
             <span>1,9K bạn bè</span>
             <div className="rightInfo-friendAvatar">
-              <img className='friendAvatar' src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/308476054_1103307597057379_870838083421102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_MeKrdoDd9oAX_4PAQP&_nc_ht=scontent.fhan5-9.fna&oh=00_AfByf0oDajWUe-rqoPIuiYBmMCHYxTsbF3n0bfNwxFzLlw&oe=63684D1D" alt="" />
-              <img className='friendAvatar' src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/308476054_1103307597057379_870838083421102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_MeKrdoDd9oAX_4PAQP&_nc_ht=scontent.fhan5-9.fna&oh=00_AfByf0oDajWUe-rqoPIuiYBmMCHYxTsbF3n0bfNwxFzLlw&oe=63684D1D" alt="" />
-              <img className='friendAvatar' src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/308476054_1103307597057379_870838083421102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_MeKrdoDd9oAX_4PAQP&_nc_ht=scontent.fhan5-9.fna&oh=00_AfByf0oDajWUe-rqoPIuiYBmMCHYxTsbF3n0bfNwxFzLlw&oe=63684D1D" alt="" />
-              <img className='friendAvatar' src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/308476054_1103307597057379_870838083421102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_MeKrdoDd9oAX_4PAQP&_nc_ht=scontent.fhan5-9.fna&oh=00_AfByf0oDajWUe-rqoPIuiYBmMCHYxTsbF3n0bfNwxFzLlw&oe=63684D1D" alt="" />
-              <img className='friendAvatar' src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/308476054_1103307597057379_870838083421102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_MeKrdoDd9oAX_4PAQP&_nc_ht=scontent.fhan5-9.fna&oh=00_AfByf0oDajWUe-rqoPIuiYBmMCHYxTsbF3n0bfNwxFzLlw&oe=63684D1D" alt="" />
-              <img className='friendAvatar' src="https://scontent.fhan5-9.fna.fbcdn.net/v/t39.30808-6/308476054_1103307597057379_870838083421102790_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_MeKrdoDd9oAX_4PAQP&_nc_ht=scontent.fhan5-9.fna&oh=00_AfByf0oDajWUe-rqoPIuiYBmMCHYxTsbF3n0bfNwxFzLlw&oe=63684D1D" alt="" />
+              <img className='friendAvatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb_4aDv5qEw9vo4eEBkDQADW7xUNEAlCW_sY4T94s&s" alt="" />
+              <img className='friendAvatar' src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2020/8/21/829850/Bat-Cuoi-Truoc-Nhung-07.jpg" alt="" />
+              <img className='friendAvatar' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZiUUNtXGhmiSAq_OFDJgWZ5yPEXHbI6BS8SAp_gtf&s" alt="" />
+              <img className='friendAvatar' src="https://1.bp.blogspot.com/--cwALLkjCmE/YGLZYq7VqvI/AAAAAAAArCw/4uWXNg5iBYQsblpvSO2UDHEG5NF4RYWtgCNcBGAsYHQ/s0/2d27fefccf755efa36a6ba7c9c8ff5db.jpeg" alt="" />
+              <img className='friendAvatar' src="https://static.wixstatic.com/media/9d8ed5_b8fcc13f08fc4374bb1f979e032b0eb7~mv2.jpg/v1/fit/w_600,h_567,al_c,q_20,enc_auto/file.jpg" alt="" />
+              <img className='friendAvatar' src="https://inkythuatso.com/uploads/thumbnails/800/2022/05/a732e392b657be4fceffdffd214e5e21-08-23-41-28.jpg" alt="" />
 
             </div>
           </div>
