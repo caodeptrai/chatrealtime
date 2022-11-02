@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {useNavigate,Link} from 'react-router-dom';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth,db} from '../firebase';
+import { auth} from '../../firebase';
 import { GoogleCircleFilled ,FacebookFilled} from '@ant-design/icons';
-import { doc, setDoc } from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+import './Auth.scss';
 
  const Login = () => {
 

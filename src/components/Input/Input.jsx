@@ -1,17 +1,18 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
 import {
   arrayUnion,
   doc,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
-import { db, storage } from "../firebase";
+import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { FileAddOutlined,SendOutlined} from '@ant-design/icons';
 import InputEmoji from 'react-input-emoji'
+import './Input.scss';
 
 const Input = () => {
   const [text, setText] = useState("");
@@ -23,10 +24,6 @@ const Input = () => {
   const handleChange = (text)=> {
     setText(text)
   }
-
-  // const handleText = (e) => {
-  //   setText(e.target.value)
-  // }
 
   const handleSend = async () => {
     if (img) {
@@ -89,7 +86,7 @@ const Input = () => {
 
   const handleKey = (e) => {
     e.code === "Enter" && handleSend();
-
+    console.log(text);
   };
 
   return (

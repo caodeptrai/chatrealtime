@@ -1,14 +1,16 @@
 import { doc, onSnapshot } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
-import { db } from "../firebase";
-
-const Chats = () => {
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from "../../context/ChatContext";
+import { db } from "../../firebase";
+import './UserChats.scss';
+import { useNavigate } from "react-router-dom";
+const UserChats = () => {
   const [chats, setChats] = useState([]);
 
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getChats = () => {
@@ -26,6 +28,7 @@ const Chats = () => {
 
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
+    navigate("/")
   };
 
   return (
@@ -35,7 +38,9 @@ const Chats = () => {
         <div
           className="userChat"
           key={chat[0]}
-          onClick={() => handleSelect(chat[1].userInfo)}
+          onClick={() => handleSelect(chat[1].userInfo)
+            
+          }
         >
           <img src={chat[1].userInfo.photoURL} alt="" />
           <div className="userChatInfo">
@@ -48,4 +53,4 @@ const Chats = () => {
   );
 };
 
-export default Chats;
+export default UserChats;

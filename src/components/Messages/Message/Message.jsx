@@ -1,27 +1,28 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
-import { ChatContext } from "../context/ChatContext";
+import React, { useContext, useEffect, useRef} from "react";
+import { AuthContext } from "../../../context/AuthContext";
+import { ChatContext } from "../../../context/ChatContext";
+import TimeAgo from "javascript-time-ago";
+import en from 'javascript-time-ago/locale/en';
+import ReactTimeAgo from 'react-time-ago'
+ import './Message.scss';
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
-   const [date,setDate] = useState("")
   const ref = useRef();
+
+  TimeAgo.addLocale(en);
 
   useEffect(() => {
     ref.current?.scrollIntoView({ behavior: "smooth" });
 
   }, [message]);
 
-  useEffect(()=>{
-    const time = new Intl.DateTimeFormat('en-US', {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(message.date)
-    setDate(time);
-  },[message])
  
   return (
    
     <div className="messageWrap">
-      <p className="messageTime">{date}</p> 
+     
       <div
         ref={ref}
         className={`message ${message.senderId === currentUser.uid && "owner"}`}
@@ -39,7 +40,12 @@ const Message = ({ message }) => {
             
           </div>
           <div className="messageContent">
-            <p>{message.text}</p>
+           
+            <p className="text">{message.text}
+            </p>
+              <p className="messageTime">
+              <ReactTimeAgo date={message.date} locale="en-US"/>
+              </p>
             {message.img && <img src={message.img} alt="" />}
           </div>
       </div>

@@ -1,7 +1,6 @@
 import { createContext, useEffect, useState } from "react";
-import { auth,db } from "../firebase";
+import { auth } from "../firebase";
 import {onAuthStateChanged} from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({children}) => {
@@ -10,7 +9,7 @@ export const AuthContextProvider = ({children}) => {
     useEffect(()=>{
       const unsub =  onAuthStateChanged(auth,(user)=>{
             setCurrentUser(user)
-            console.log(user.uid)
+            console.log(user)
             // setDoc(doc(db, "userChats", user.uid), {});
         })
 
