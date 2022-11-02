@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import {signOut} from "firebase/auth"
 import { auth } from '../../firebase';
 import './Header.scss'
-import { LogoutOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 
 
 const Header = ()=> {
@@ -13,11 +13,11 @@ const Header = ()=> {
   return (
     <div className='header'>
         <div className="content">
-            <div >
+            <Link to='/' >
               
               <img className='logo-img' src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Facebook_Messenger_logo_2020.svg/2048px-Facebook_Messenger_logo_2020.svg.png" alt="" />
               <span className='logo'>ChatRealtime</span>
-            </div>
+            </Link>
             
             <div className="profileUser abc">
                 <img className='userAvatar' src={currentUser.photoURL} alt="" />

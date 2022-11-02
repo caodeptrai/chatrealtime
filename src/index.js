@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import GlobalStyle from './components/GlobalStyle/GlobalStyle';
 import { AuthContextProvider } from './context/AuthContext';
 import { ChatContextProvider } from './context/ChatContext';
 
@@ -10,7 +11,10 @@ root.render(
   <AuthContextProvider>
      <ChatContextProvider>
       <React.StrictMode>
-        <App />
+        <GlobalStyle>
+
+          <App />
+        </GlobalStyle>
       </React.StrictMode>
     </ChatContextProvider>
   </AuthContextProvider>

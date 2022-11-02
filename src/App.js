@@ -1,8 +1,5 @@
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
-// import Home from "./pages/Home/Home";
-// import Profile from './pages/Profile/Profile';
-import "./style.scss";
 import 'antd/dist/antd.min.css';
 
 import {
