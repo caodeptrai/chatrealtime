@@ -4,6 +4,8 @@ import { AppContext } from '../../context/AppContext';
 import {  doc, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import { AuthContext } from '../../context/AuthContext';
+
+
 function AddRoomModal() {
     const { isAddRoomVisible, setIsAddRoomVisible } = useContext(AppContext);
     const [roomName,setroomName] = useState('');
@@ -74,6 +76,7 @@ function AddRoomModal() {
                   onChange={(e)=>setroomName(e.target.value)}
                 />
                 <p>{validateMsg.roomName}</p>
+                <input required  type="file" id="file" />
                 {/* <input 
                   type="text" 
                   placeholder='your title'

@@ -3,16 +3,10 @@ import {Modal} from 'antd'
 import { 
     CalendarOutlined, 
     CameraOutlined, 
-    EditOutlined, 
-    EnvironmentOutlined, 
-    FacebookOutlined, 
     HomeOutlined, 
-    InstagramOutlined, 
     MailOutlined, 
     PhoneOutlined} from '@ant-design/icons';
   import { Tooltip, Avatar} from 'antd';
-  import { Link } from 'react-router-dom';
-  import { AuthContext } from "../../../context/AuthContext";
 import { AppContext } from '../../../context/AppContext';
 import './Profile.scss'
 import { ChatContext } from '../../../context/ChatContext';
@@ -92,15 +86,6 @@ function ProfileOwnerModal() {
           <CalendarOutlined className='profileIcon'/>
           <span>30/04/2001</span>
         </div>
-        {/* <div className="pro-contentWrap">
-          <FacebookOutlined  className='profileIcon'/>
-          <Link to='/https://www.facebook.com/cao.h147'>https://www.facebook.com/cao.h147</Link >
-        </div>
-        <div className="pro-contentWrap">
-          <InstagramOutlined className='profileIcon'/>
-          <Link to='/https://www.instagram.com/cao.h147'>https://www.instagram.com/cao.h147</Link>
-        </div> */}
-
       </div>
       
     </div>

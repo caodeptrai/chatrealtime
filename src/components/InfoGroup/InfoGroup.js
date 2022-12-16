@@ -2,6 +2,7 @@ import { DashOutlined, UsergroupAddOutlined } from '@ant-design/icons'
 import { Popover } from 'antd'
 import React, { useContext} from 'react'
 import { AppContext } from '../../context/AppContext'
+import SearchMember from '../Search/SearchMember'
 import './InfoGroup.scss'
 
 function InfoGroup() {
@@ -29,7 +30,7 @@ function InfoGroup() {
             Thêm thành viên
             </button>
         <h5 className='listDes'>{ `Danh sách thành viên (${members.length})`} </h5>
-        <input placeholder='Tìm kiếm thành viên'/>
+        <SearchMember/>
         <div className='memberList'>
             {members.map((member)=>(
                 <div className='infoMember' key={member.uid}>

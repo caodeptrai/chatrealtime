@@ -7,16 +7,12 @@ import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import './Auth.scss';
 import { doc, setDoc } from 'firebase/firestore';
 import { generateKeywords } from "../../firebase/services";
-import {success,warning,error} from '../../components/ToastMessage/index';
-import { ToastContainer, toast } from 'react-toastify';
-
-
 
  const Login = () => {
   const [email,setEmail] = useState('');
   const [password,setPassword] = useState('');
   const [validateMsg,setValidateMsg] = useState('');
-  const [err,setErr] = useState(false);
+
   const navigate = useNavigate();
 
   // login with email
@@ -40,8 +36,6 @@ import { ToastContainer, toast } from 'react-toastify';
       navigate("/");
        
     }catch(err) {
-      setErr(true);
-     // error();
      msg.mesasge = 'Email hoặc password không chính xác !'
      setValidateMsg(msg)
     }
@@ -68,7 +62,7 @@ import { ToastContainer, toast } from 'react-toastify';
         console.log(auth.currentUser.uid)
         navigate("/");
       }catch(err) {
-        setErr(true);
+        
       }
   };
 
@@ -100,7 +94,6 @@ import { ToastContainer, toast } from 'react-toastify';
             </form>
             
                 <p>{validateMsg.mesasge}</p>
-            <ToastContainer/>
             <button className='btn' onClick={handleSubmitGoogle}>
                 <span>Login with google</span>
                 <GoogleCircleFilled style={{color:"currentColor"}}/>

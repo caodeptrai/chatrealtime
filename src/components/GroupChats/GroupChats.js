@@ -1,16 +1,11 @@
 
-import React, { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useContext} from "react";
 import { ChatContext } from "../../context/ChatContext";
 import './GroupChats.scss';
 import { Button, Collapse } from 'antd';
 import CollapsePanel from "antd/lib/collapse/CollapsePanel";
 import { AppContext } from "../../context/AppContext";
 import { PlusSquareOutlined } from "@ant-design/icons";
-import useFirestore from "../../hooks/useFirestore";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
-import { db } from "../../firebase/config";
-
 
 const GroupChats = () => {
 

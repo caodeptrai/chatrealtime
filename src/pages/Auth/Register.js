@@ -7,6 +7,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { useNavigate, Link } from "react-router-dom";
 import './Auth.scss';
 import { generateKeywords } from "../../firebase/services";
+import { Spin } from "antd";
 
 
 const Register = () => {
@@ -53,7 +54,7 @@ const Register = () => {
 
             //create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
-            navigate("/");
+            // navigate("/");
           } catch (err) {
             console.log(err);
             setErr(true);
@@ -71,17 +72,19 @@ const Register = () => {
     <div className="formContainer">
       <div className="formWrapper">
         <span className="logo">ChatRealtime</span>
-        <span className="title">Sign Up</span>
+        <span className="title">Đăng ký</span>
         <form onSubmit={handleSubmit}>
-          <input required type="text" placeholder="display name" />
+          <input required type="text" placeholder="Tên hiển thị" />
           <input required type="email" placeholder="email" />
-          <input required type="password" placeholder="password" />
+          <input required type="password" placeholder="mật khẩu" />
           <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
             <span>Add an avatar</span>
           </label>
-          <button disabled={loading} className='btn'>Sign up</button>
+          <button disabled={loading} className='btn'>
+            {loading ? <Spin/> : 'Đăng ký'}
+            </button>
           {loading && "Uploading and compressing the image please wait..."}
           {err && <span>Something went wrong</span>}
         </form>

@@ -1,9 +1,5 @@
 import React, { useContext, useState } from "react";
 import {
-  collection,
-  query,
-  where,
-  getDocs,
   getDoc,
   doc,
   setDoc,
@@ -15,6 +11,7 @@ import { AuthContext } from "../../context/AuthContext";
 import './Search.scss';
 import { AutoComplete, Avatar, Spin } from "antd";
 import { debounce } from 'lodash';
+import { AppContext } from "../../context/AppContext";
 
 
 
@@ -79,11 +76,11 @@ function DebounceSearch({
 
 
 
-const Search = () => {
+const SearchMember = () => {
   const [value, setValue] = useState([]);
 
    const { currentUser } = useContext(AuthContext);
-
+   const {members} = useContext(AppContext)
 
     const handleSelect = async (value,option) => {
 
@@ -140,22 +137,8 @@ const Search = () => {
   
 
   async function fetchUserList(search) {
-    
-    const q = query(
-        collection(db, "users"),
-        where("keywords", "array-contains", search)
-      );
-      const querySnapshot = await getDocs(q);
-    
-      const data = [];
-      let res = {}
-      querySnapshot.forEach((doc) => {
-        res = {
-          ...doc.data()
-        }
-        data.push(res);
-     });
-         return data
+   
+     return members.filter((opt) => opt.keywords.includes(search))
     }
 
     
@@ -176,4 +159,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchMember;

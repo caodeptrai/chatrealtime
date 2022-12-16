@@ -1,25 +1,8 @@
-.search {
-    border-bottom: 1px solid #ccc;
 
-    .searchForm {
-         padding: 10px;
-
-        input {
-            background-color: transparent;
-            border: none;
-            color: #000;
-            outline: none;
-
-            &::placeholder {
-                color: #ccc;
-            }
-        }
-    }
-
-}
 
 .custom {
-    // padding-top: 20px;
+    margin-top: 20px;
+    //  padding-top: 20px;
     width: 70%;
     // border: 1px solid red;
     // border-radius: 10px;

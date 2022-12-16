@@ -9,7 +9,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import {useContext} from 'react';
-import { AuthContext, AuthContextProvider} from "./context/AuthContext";
+import { AuthContext} from "./context/AuthContext";
 import AddRoomModal from './components/Modals/AddRoomModal';
 import InviteMemberModal from './components/Modals/InviteMemberModal';
 import ProfileModal from './components/Modals/ProfileModal/ProfileModal';

@@ -12,7 +12,7 @@ const UserChats = () => {
 
   const { currentUser } = useContext(AuthContext);
   const { dispatch } = useContext(ChatContext);
-  const {setIsInfoGroupVisible,setSelectRoomId} = useContext(AppContext)
+  const {setIsInfoGroupVisible} = useContext(AppContext)
 
   useEffect(() => {
 

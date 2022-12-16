@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import UserChats from '../UserChats/UserChats';
 import Search from '../Search/Search';
 import './SideBar.scss';
-import { LogoutOutlined, UsergroupAddOutlined, UserOutlined } from '@ant-design/icons';
+import { LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import GroupChats from '../GroupChats/GroupChats';
 import { AppContext } from '../../context/AppContext';
 import { signOut } from 'firebase/auth';

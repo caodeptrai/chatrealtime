@@ -4,15 +4,12 @@ import {
     CalendarOutlined, 
     CameraOutlined, 
     EditOutlined, 
-    EnvironmentOutlined, 
-    FacebookOutlined, 
     HomeOutlined, 
-    InstagramOutlined, 
+   
     MailOutlined, 
     PhoneOutlined} from '@ant-design/icons';
-  import { Button, Tooltip, Avatar, Form, Input, Alert } from 'antd';
-  import { Link } from 'react-router-dom';
-  import { AuthContext } from "../../../context/AuthContext";
+import { Tooltip, Avatar } from 'antd';
+import { AuthContext } from "../../../context/AuthContext";
 import { AppContext } from '../../../context/AppContext';
 import './Profile.scss'
 function ProfileModal() {
@@ -83,10 +80,6 @@ function ProfileModal() {
           
         </div>
         <div className="pro-contentWrap">
-        <EnvironmentOutlined className='profileIcon'/>
-          <span>Đến từ <b>Thái Nguyên</b></span>
-        </div>
-        <div className="pro-contentWrap">
           <MailOutlined className='profileIcon'/>
           <span>{currentUser.email}</span>
         </div>
@@ -98,14 +91,7 @@ function ProfileModal() {
           <CalendarOutlined className='profileIcon'/>
           <span>30/04/2001</span>
         </div>
-        <div className="pro-contentWrap">
-          <FacebookOutlined  className='profileIcon'/>
-          <Link to='/https://www.facebook.com/cao.h147'>https://www.facebook.com/cao.h147</Link >
-        </div>
-        <div className="pro-contentWrap">
-          <InstagramOutlined className='profileIcon'/>
-          <Link to='/https://www.instagram.com/cao.h147'>https://www.instagram.com/cao.h147</Link>
-        </div>
+       
 
       </div>
       

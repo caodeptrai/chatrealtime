@@ -95,7 +95,7 @@ export default function InviteMemberModal() {
   const [value, setValue] = useState([]);
   const [form] = Form.useForm();
 
-  console.log("day la data",data)
+
   const handleOk = async () => {
     // reset form value
     form.resetFields();
@@ -118,8 +118,6 @@ export default function InviteMemberModal() {
 
     setIsInviteMemberVisible(false);
   };
-
-  console.log("value",value)
   
   return (
     <div>

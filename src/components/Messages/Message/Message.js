@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useRef, useState} from "react";
 import { AuthContext } from "../../../context/AuthContext";
-import { ChatContext } from "../../../context/ChatContext";
 import TimeAgo from "javascript-time-ago";
 import en from 'javascript-time-ago/locale/en';
 import ReactTimeAgo from 'react-time-ago'
@@ -10,7 +9,6 @@ import { db } from "../../../firebase/config";
 
 const Message = ({ message }) => {
   const { currentUser } = useContext(AuthContext);
-  const { data } = useContext(ChatContext);
   const [chat,SetChat] = useState([])
   const ref = useRef();
 
@@ -24,8 +22,6 @@ const Message = ({ message }) => {
     );
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      // const data = [];
-      // let res = {}
       querySnapshot.forEach((doc) => {
         SetChat(doc.data());
      
