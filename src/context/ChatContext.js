@@ -12,6 +12,7 @@ import {
     const INITIAL_STATE = {
       chatId: "null",
       user: {},
+      
     };
   
     const chatReducer = (state, action) => {
@@ -24,7 +25,12 @@ import {
                 ? currentUser.uid + action.payload.uid
                 : action.payload.uid + currentUser.uid,
           };
-  
+        case "SELECT_ROOM":
+          return {
+            user:action.payload,
+            chatId:action.payload.id
+          }
+        
         default:
           return state;
       }

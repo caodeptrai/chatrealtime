@@ -2,7 +2,7 @@
     border-bottom: 1px solid #ccc;
 
     .searchForm {
-        padding: 10px;
+         padding: 10px;
 
         input {
             background-color: transparent;
@@ -17,3 +17,18 @@
     }
 
 }
+
+.custom {
+    // padding-top: 20px;
+    width: 70%;
+    // border: 1px solid red;
+    // border-radius: 10px;
+}
+
+// .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+//     background-color: transparent; 
+//     border:none;
+// }
+// ::selection {
+//     background-color: transparent;
+// }

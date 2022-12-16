@@ -9,9 +9,15 @@ import {
   Navigate,
 } from "react-router-dom";
 import {useContext} from 'react';
-import { AuthContext } from "./context/AuthContext";
-import { publicRoutes } from './routes/routes';
-import MasterLayout from './layouts/MasterLayout/MasterLayout';
+import { AuthContext, AuthContextProvider} from "./context/AuthContext";
+import AddRoomModal from './components/Modals/AddRoomModal';
+import InviteMemberModal from './components/Modals/InviteMemberModal';
+import ProfileModal from './components/Modals/ProfileModal/ProfileModal';
+import Home from './pages/Home/Home';
+import AppProvider from './context/AppContext';
+import ProfileOwnerModal from './components/Modals/ProfileModal/ProfileOwnerModal';
+
+
 
 function App() {
 
@@ -30,30 +36,27 @@ function App() {
     
     <BrowserRouter>
       <Routes>
-        {publicRoutes.map((route,index) => {
-          const Page = route.component;
-          let Layout = MasterLayout;
-
-          return (
-            <Route
-              key={index}
-              path={route.path}
-              element={
+        <Route path="/">
+              <Route index element={
                 <ProtectedRoute>
-                  <Layout>
-                    <Page/>
-                  </Layout>
+                  <AppProvider>
+                   <Home/>
+                  <AddRoomModal/>
+                  <InviteMemberModal/>
+                  <ProfileModal/>
+                  <ProfileOwnerModal/>
+                  </AppProvider>
                 </ProtectedRoute>
-                
               }>
-            
-              </Route>   
-          );
-        })}
-        <Route path="login" element={<Login/>}></Route>
-        <Route path="register" element={<Register/>}></Route>
+
+              </Route>
+              <Route path="login" element={<Login/>}></Route>
+              <Route path="register" element={<Register/>}></Route>
+
+          </Route>
       </Routes>
-    </BrowserRouter>
+  </BrowserRouter>
+  
     
   );
 }
