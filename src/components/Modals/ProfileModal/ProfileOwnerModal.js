@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext} from 'react'
 import {Modal} from 'antd'
 import { 
     CalendarOutlined, 
@@ -9,11 +9,13 @@ import {
   import { Tooltip, Avatar} from 'antd';
 import { AppContext } from '../../../context/AppContext';
 import './Profile.scss'
-import { ChatContext } from '../../../context/ChatContext';
+
+
+
 
 function ProfileOwnerModal() {
-    const { data } = useContext(ChatContext);
-    const {isVisibleProfileUser,setIsProfileVisibleUser} = useContext(AppContext)
+    
+    const {isVisibleProfileUser,setIsProfileVisibleUser,userChatInfo} = useContext(AppContext)
 
     const handleOk = ()=> {
         setIsProfileVisibleUser(false)
@@ -22,6 +24,8 @@ function ProfileOwnerModal() {
     const handleCancel = ()=> {
         setIsProfileVisibleUser(false)
     }
+
+
   return (
     <Modal  
     open={isVisibleProfileUser}
@@ -32,14 +36,14 @@ function ProfileOwnerModal() {
       <div className="pro-header">
         <div className="sideRight">
           <div className="rightAvatarWrap">
-            <img className='rightAvatar' src={data.user.photoURL} alt="" />
+            <img className='rightAvatar' src={userChatInfo[0]?.photoURL} alt="" />
             <button className='updateAvatarBtn'>
               <CameraOutlined />
             </button>
           </div>
           
           <div className="rightInfo">
-            <h3 className='rightInfo-name'>{data.user.displayName}</h3>
+            <h3 className='rightInfo-name'>{userChatInfo[0]?.displayName}</h3>
             <span>1,9K bạn bè</span>
             <div className="rightInfo-friendAvatar">
               
@@ -69,23 +73,29 @@ function ProfileOwnerModal() {
       </div>
       <div className="pro-content">
         <h3 className='introduce'>Giới thiệu</h3>
+        {userChatInfo[0]?.address && 
         <div className="pro-contentWrap">
-          <HomeOutlined className='profileIcon'/>
-          <span>Sống tại <b>Thái Nguyên</b></span>
-          
-        </div>
-        <div className="pro-contentWrap">
+        <HomeOutlined className='profileIcon'/>
+        <span>Sống tại <b>{userChatInfo[0]?.address}</b></span>
+        </div>}
+        
+          {userChatInfo[0]?.email && 
+          <div className="pro-contentWrap">
           <MailOutlined className='profileIcon'/>
-          <span>{data.user.email}</span>
-        </div>
+          <span>{userChatInfo[0]?.email}</span>
+        </div>}
+        
+        {userChatInfo[0]?.phone && 
         <div className="pro-contentWrap">
           <PhoneOutlined className='profileIcon'/>
-          <span>0868876059</span>
-        </div>
+          <span>{userChatInfo[0]?.phone}</span>
+        </div>}
+        
+        {userChatInfo[0]?.birth && 
         <div className="pro-contentWrap">
           <CalendarOutlined className='profileIcon'/>
-          <span>30/04/2001</span>
-        </div>
+          <span>{userChatInfo[0]?.birth}</span>
+        </div>}
       </div>
       
     </div>

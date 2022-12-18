@@ -6,7 +6,7 @@ function Wellcome() {
     <div className='wellcome'>
         <div className='container'>
 
-            <h3 className='wellcomeTitle'>Chào mừng bạn đến với Twitter!</h3>
+            <h3 className='wellcomeTitle'>Chào mừng bạn đến với ZaloChat!</h3>
             <p className='wellcomeDes'>Khám phá những tiện ích hỗ trợ làm việc và trò chuyện cùng người thân, bạn bè
                 của bạn.
             </p>

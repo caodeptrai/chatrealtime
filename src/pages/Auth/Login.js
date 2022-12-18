@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import {useNavigate,Link} from 'react-router-dom';
-import { FacebookAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import {  signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../../firebase/config";
-import { GoogleCircleFilled ,FacebookFilled} from '@ant-design/icons';
+import { GoogleCircleFilled} from '@ant-design/icons';
 import { signInWithPopup, GoogleAuthProvider} from "firebase/auth";
 import './Auth.scss';
 import { doc, setDoc } from 'firebase/firestore';
@@ -24,19 +24,18 @@ import { generateKeywords } from "../../firebase/services";
     //  return;
     }
     if(!password){
-      msg.password = 'Vui lòng nhập password !'
+      msg.password = 'Vui lòng nhập mật khẩu !'
       setValidateMsg(msg);
      // return;
     }
     try {
-     
-      
+
       await signInWithEmailAndPassword(auth, email, password);
     
       navigate("/");
        
     }catch(err) {
-     msg.mesasge = 'Email hoặc password không chính xác !'
+     msg.mesasge = 'Email hoặc mật khẩu không chính xác !'
      setValidateMsg(msg)
     }
    
@@ -58,8 +57,6 @@ import { generateKeywords } from "../../firebase/services";
         });
 
         await setDoc(doc(db, "userChats",auth.currentUser.uid), {}); 
-        await setDoc(doc(db,"groupChats",auth.currentUser.uid),{});
-        console.log(auth.currentUser.uid)
         navigate("/");
       }catch(err) {
         
@@ -72,39 +69,33 @@ import { generateKeywords } from "../../firebase/services";
   return (
     <div className='formContainer'>
         <div className="formWrapper">
-            <span className="logo">ChatRealtime</span>
-            <span className="title">Login</span>
+            <span className="logo">ZaloChat</span>
+            <span className="title">Đăng nhập</span>
 
             <form>
                 <input 
                   type="email" 
-                  placeholder='your-email@gmail.com'
+                  placeholder='abc@gmail.com'
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
                 />
-                <p>{validateMsg.email}</p>
+                <p className='errorMsg'>{validateMsg.email}</p>
                 <input 
                   type="password" 
-                  placeholder='your password'
+                  placeholder='mật khẩu'
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}/>
-                   <p>{validateMsg.password}</p>
-                <button type='button' className='btn' onClick={handleSubmit}>Log in</button>
-
+                   <p className='errorMsg'>{validateMsg.password}</p>
+                <button type='button' className='btn' onClick={handleSubmit}>Đăng nhập</button>
             </form>
             
-                <p>{validateMsg.mesasge}</p>
+                <p className='errorMsg'>{validateMsg.mesasge}</p>
             <button className='btn' onClick={handleSubmitGoogle}>
-                <span>Login with google</span>
+                <span>Đăng nhập với google</span>
                 <GoogleCircleFilled style={{color:"currentColor"}}/>
               </button>
-
-              <button className='btn' onClick={handleSubmitGoogle}>
-                <span>Login with facebook</span>
-                <FacebookFilled  style={{color:"currentColor"}}/>
-              </button>
             
-            <p>You don't have an account?<Link to="/register" style={{paddingLeft:4}}>Sign up</Link> </p>
+            <p>Bạn chưa có tài khoản?<Link to="/register" style={{paddingLeft:4}}>Đăng ký</Link> </p>
         </div>
     </div>
   )

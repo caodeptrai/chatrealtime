@@ -34,11 +34,20 @@
 }
 
 .collapseRoom {
+    // max-height: 400px;
+    // overflow-y: scroll;
+    flex: 0;
+}
+
+.list-room {
     max-height: 200px;
     overflow-y: scroll;
-    flex: 0;
 }
 
 .ant-collapse>.ant-collapse-item>.ant-collapse-header .ant-collapse-header-text {
     flex: none;
+}
+
+.ant-collapse-content>.ant-collapse-content-box {
+    padding: 0;
 }

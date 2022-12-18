@@ -32,29 +32,30 @@ const Register = () => {
       const date = new Date().getTime();
       const storageRef = ref(storage, `${displayName + date}`);
 
+      
       await uploadBytesResumable(storageRef, file)
       .then(() => {
         getDownloadURL(storageRef)
         .then(async (downloadURL) => {
           try {
-            //Update profile
-            await updateProfile(res.user, {
-              displayName,
-              photoURL: downloadURL,
-            });
-            //create user on firestore
-            await setDoc(doc(db, "users", res.user.uid), {
-              uid: res.user.uid,
-              displayName,
-              email,
-              photoURL: downloadURL,
-              keywords: generateKeywords(res.user.displayName?.toLowerCase()),
-            });
             
-
-            //create empty user chats on firestore
-            await setDoc(doc(db, "userChats", res.user.uid), {});
-            // navigate("/");
+            await Promise.all([
+              //Update profile
+              updateProfile(res.user, {
+              displayName,
+              photoURL: downloadURL,
+              }),
+               //create user on firestore
+              setDoc(doc(db, "users", res.user.uid), {
+                uid: res.user.uid,
+                displayName,
+                email,
+                photoURL: downloadURL,
+                keywords: generateKeywords(displayName),
+              }),
+              //create empty user chats on firestore
+              setDoc(doc(db, "userChats", res.user.uid), {})])
+              navigate("/");
           } catch (err) {
             console.log(err);
             setErr(true);
@@ -71,7 +72,7 @@ const Register = () => {
   return (
     <div className="formContainer">
       <div className="formWrapper">
-        <span className="logo">ChatRealtime</span>
+        <span className="logo">ZaloChat</span>
         <span className="title">Đăng ký</span>
         <form onSubmit={handleSubmit}>
           <input required type="text" placeholder="Tên hiển thị" />
@@ -80,16 +81,16 @@ const Register = () => {
           <input required style={{ display: "none" }} type="file" id="file" />
           <label htmlFor="file">
             <img src={Add} alt="" />
-            <span>Add an avatar</span>
+            <span>Thêm ảnh đại diện</span>
           </label>
           <button disabled={loading} className='btn'>
             {loading ? <Spin/> : 'Đăng ký'}
             </button>
-          {loading && "Uploading and compressing the image please wait..."}
-          {err && <span>Something went wrong</span>}
+          {loading && "Đang tải lên và nén hình ảnh vui lòng đợi..."}
+          {err && <span>Đã có lỗi vui lòng thử lại</span>}
         </form>
         <p>
-          You do have an account? <Link to="/login">Login</Link>
+          Bạn đã có tài khoản? <Link to="/login">Đăng nhập</Link>
         </p>
       </div>
     </div>

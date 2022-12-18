@@ -15,3 +15,7 @@
 // ::selection {
 //     background-color: transparent;
 // }
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-radius: 8px;
+    
+}

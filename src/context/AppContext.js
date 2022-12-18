@@ -1,3 +1,4 @@
+
 import React, { useContext,useState } from 'react';
 import useFirestore from '../hooks/useFirestore';
 import { AuthContext } from './AuthContext';
@@ -14,7 +15,7 @@ export default function AppProvider({ children }) {
   const [isInfoGroupVisible,setIsInfoGroupVisible] = useState(false)
   const [selectRoomId,setSelectRoomId] = useState('') 
   const [isVisibleProfileUser,setIsProfileVisibleUser] = useState(false) 
-
+  const [editProfile,setEditProfile] = useState(false)
 
   const roomsCondition = React.useMemo(() => {
     return {
@@ -42,11 +43,20 @@ export default function AppProvider({ children }) {
 const members = useFirestore('users', usersCondition);
 
 
+const userChatInfoCondition = React.useMemo(() => {
+  return {
+    fieldName: 'uid',
+    operator: '==',
+    compareValue: data.user.uid,
+  };
+}, [data.user.uid]);
+
+const userChatInfo = useFirestore('users', userChatInfoCondition);
   
   return (
     <AppContext.Provider
       value={{
-        // userChat,
+         userChatInfo,
         rooms,
         members,
         selectedRoom,
@@ -61,7 +71,9 @@ const members = useFirestore('users', usersCondition);
         isInfoGroupVisible,
         setIsInfoGroupVisible,
         isVisibleProfileUser,
-        setIsProfileVisibleUser
+        setIsProfileVisibleUser,
+        editProfile,
+        setEditProfile
       //  clearState,
       }}
     >

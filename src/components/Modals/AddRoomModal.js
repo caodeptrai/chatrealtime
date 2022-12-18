@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react'
-import {Modal} from 'antd'
+import { Modal} from 'antd'
 import { AppContext } from '../../context/AppContext';
 import {  doc, serverTimestamp, setDoc } from 'firebase/firestore';
-import { db } from '../../firebase/config';
+import { db, storage } from '../../firebase/config';
 import { AuthContext } from '../../context/AuthContext';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+
 
 
 function AddRoomModal() {
     const { isAddRoomVisible, setIsAddRoomVisible } = useContext(AppContext);
     const [roomName,setroomName] = useState('');
+    const [file,setFile] = useState('')
     const [validateMsg,setValidateMsg] = useState('');
     const {currentUser} = useContext(AuthContext)
     const [docId,setDocId] = useState('')
@@ -23,8 +26,9 @@ function AddRoomModal() {
       setDocId(text)
     }
 
-    const handleOk = async () => {
 
+    const handleOk = async () => {
+      
       createId(20);
         const msg = {}
         if(!roomName) {
@@ -33,32 +37,48 @@ function AddRoomModal() {
           setIsAddRoomVisible(true);
         //  return;
         }
-        //  if(!title){
-        //   msg.title = 'Vui lòng nhập title !'
-        //   setValidateMsg(msg);
-        //   setIsAddRoomVisible(true);
-        //  // return;
-        // }
         else {
 
-          console.log("docId",docId)
-            await setDoc(doc(db, "rooms",docId), {
-               roomId:docId,
-              displayName:roomName,
-              members:[currentUser.uid],
-              createAt:serverTimestamp(),
+          try {
+            const date = new Date().getTime();
+            const storageRef = ref(storage, `${roomName + date}`);
+    
+          await uploadBytesResumable(storageRef, file)
+          .then(() => {
+            getDownloadURL(storageRef)
+            .then(async (downloadURL) => {
+              try {
+                await Promise.all([
+                  setDoc(doc(db, "rooms",docId), {
+                    roomId:docId,
+                     displayName:roomName,
+                     photoURL: downloadURL,
+                     members:[currentUser.uid],
+                     createAt:serverTimestamp(),
+                   }),
+                   setDoc(doc(db, "chats", docId), { messages: [] })
+                ])
+                setIsAddRoomVisible(false);
+              } catch (err) {
+                console.log("thêm phòng thất bại !!!")
+              }
             });
-
-            await setDoc(doc(db, "chats", docId), { messages: [] });
-
-            setIsAddRoomVisible(false);
+          });
+            
+          } catch (error) {
+            console.log("thêm phòng thất bại !!!")
+          }
+          setroomName('')
+          
         }
       
       };
+
     const handleCancel = () => {
         // reset form value
-       // form.resetFields();
-    
+        // Form.resetFields();
+        setroomName('')
+        setFile('')
         setIsAddRoomVisible(false);
       };
     
@@ -76,14 +96,11 @@ function AddRoomModal() {
                   onChange={(e)=>setroomName(e.target.value)}
                 />
                 <p>{validateMsg.roomName}</p>
-                <input required  type="file" id="file" />
-                {/* <input 
-                  type="text" 
-                  placeholder='your title'
-                  value={title}
-                  onChange={(e)=>setTitle(e.target.value)}/>
-                   <p>{validateMsg.title}</p> */}
-                
+                <input required  
+                type="file" 
+                id="file" 
+                onChange = {(e)=>setFile(e.target.files[0])}
+                />
             </form>
     </Modal>
   )

@@ -14,8 +14,8 @@ import AddRoomModal from './components/Modals/AddRoomModal';
 import InviteMemberModal from './components/Modals/InviteMemberModal';
 import ProfileModal from './components/Modals/ProfileModal/ProfileModal';
 import Home from './pages/Home/Home';
-import AppProvider from './context/AppContext';
 import ProfileOwnerModal from './components/Modals/ProfileModal/ProfileOwnerModal';
+import AppProvider from './context/AppContext';
 
 
 
@@ -40,7 +40,8 @@ function App() {
               <Route index element={
                 <ProtectedRoute>
                   <AppProvider>
-                   <Home/>
+
+                  <Home/>
                   <AddRoomModal/>
                   <InviteMemberModal/>
                   <ProfileModal/>

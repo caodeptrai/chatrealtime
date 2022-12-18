@@ -28,6 +28,7 @@ const GroupChats = () => {
     <div >
        <Collapse ghost defaultActiveKey={['1']}>
            <CollapsePanel header='Danh sách các phòng' key={1} className='collapseRoom'>
+            <div className="list-room">
             {rooms.map((room)=>(
                <div
                className="userChat"
@@ -41,6 +42,8 @@ const GroupChats = () => {
              </div>
              </div>
             ))}
+
+            </div>
            <Button
               type='text'
               icon={<PlusSquareOutlined />}

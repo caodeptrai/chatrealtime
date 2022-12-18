@@ -10,10 +10,13 @@ import { auth } from '../../firebase/config';
 import { AuthContext } from '../../context/AuthContext';
 
 const SideBar = () => {
-  const {setIsProfileVisible} = useContext(AppContext)
+  const {setIsProfileVisible,setEditProfile} = useContext(AppContext)
   const { currentUser } = useContext(AuthContext);
 
-
+  const handleProfileVisible = ()=> {
+    setIsProfileVisible(true)
+    setEditProfile(false)
+  }
 
 
   return (
@@ -22,7 +25,7 @@ const SideBar = () => {
         <div className='logo'>
 
           <img className='logoImg' src='https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/800px-Twitter-logo.svg.png' alt=''/>
-          <span className='chatsTitle'>Twitter</span>
+          <span className='chatsTitle'>ZaloChat</span>
         </div>
       
         <div className="profileUser">
@@ -30,14 +33,14 @@ const SideBar = () => {
                 <span className='userName'>{currentUser.displayName}</span>
                 
               <ul className='profileList'>
-                <li className='profileItem profile' onClick={()=>setIsProfileVisible(true)}>
+                <li className='profileItem profile' onClick={handleProfileVisible}>
                 <UserOutlined className='profileIcon'/>
                     Xem hồ sơ
                 </li>
                 <li className='profileItem logout'>
                   <button className='logoutBtn' onClick={()=>signOut(auth)}>
                   <LogoutOutlined className='profileIcon'/>
-                    Log out
+                    Đăng xuất
                     </button>
                     
                 </li>

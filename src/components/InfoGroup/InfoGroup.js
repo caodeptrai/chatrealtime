@@ -20,8 +20,6 @@ function InfoGroup() {
         setIsInviteMemberVisible(true)
     };
 
-    console.log("list members",members)
-
   return (
     <div className='infoGroupWrap'>
         <h3 className='groupTitle'>Thành viên</h3>
